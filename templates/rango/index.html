@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-
-{% load static %}
-
 <html>
-
     <head>
         <title>Rango</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
 
     <body>
-        <h1>Rango says...</h1>
-        hello world! <strong>{{ boldmessage }}</strong><br />
-        <a href="/rango/about/">About</a><br />
-        <img src="{% static "lily-may.jpg" %}" alt="Picture of lily-may" />"
-    </body>
+        <h1>Rango says...hello world!</h1>
 
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li>{{ category.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+
+        <a href="/rango/about/">About</a>
+    </body>
 </html>
